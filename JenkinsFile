@@ -21,7 +21,7 @@
     stage('Build & Push Docker image') {
       steps {
         script {
-          docker.withRegistry('', 'dockerhub-creds') {
+          docker.withRegistry('', 'lm-react') {
             def img = docker.build("${IMAGE_NAME}:${IMAGE_TAG}")
             img.push()
             sh "docker tag ${IMAGE_NAME}:${IMAGE_TAG} ${IMAGE_NAME}:latest"
